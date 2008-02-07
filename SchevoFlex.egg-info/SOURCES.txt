@@ -8,3 +8,4 @@ SchevoFlex.egg-info/not-zip-safe
 SchevoFlex.egg-info/paster_plugins.txt
 SchevoFlex.egg-info/top_level.txt
 schevoflex/__init__.py
+schevoflex/test/__init__.py
