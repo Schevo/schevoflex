@@ -1,0 +1,9 @@
+setup.cfg
+setup.py
+SchevoFlex.egg-info/PKG-INFO
+SchevoFlex.egg-info/SOURCES.txt
+SchevoFlex.egg-info/dependency_links.txt
+SchevoFlex.egg-info/entry_points.txt
+SchevoFlex.egg-info/not-zip-safe
+SchevoFlex.egg-info/top_level.txt
+schevoflex/__init__.py
