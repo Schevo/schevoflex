@@ -13,4 +13,3 @@ else:
 
 
 FLEXUNIT = join(BASE_DIR, '../flexunit-trunk')
-
