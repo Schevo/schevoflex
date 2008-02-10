@@ -23,6 +23,6 @@ setup(
     install_requires = [
         'Schevo >= 3.1a1',
         ],
-    entry_points = [
-        ],
+    entry_points = """
+        """,
     )
