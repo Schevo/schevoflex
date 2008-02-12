@@ -19,9 +19,5 @@ public class HelloWorldTest extends TestCase {
   public function testSameStringSuccess():void {
     assertTrue("Strings do not match.", HelloWorld.sameString("abc") == "abc");
   }
-
-  public function testSameStringFailure():void {
-    assertTrue("Strings do not match.", HelloWorld.sameString("abc") == "xyz");
-  }
 }
 }
