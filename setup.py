@@ -44,11 +44,16 @@ setup(
     include_package_data = True,
     zip_safe = False,
     install_requires = [
+        'Paste',
+        'PasteScript',
         'PyAMF >= 0.1',
         'Schevo >= 3.1a1',
         ],
-    entry_points = """
-        """,
+    entry_points = {
+        'paste.app_factory': [
+            'wsgigateway = schevoflex.wsgigateway:app_factory',
+            ],
+        },
 
     # Distutils customization.
     cmdclass = dict(

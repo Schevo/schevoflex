@@ -9,4 +9,6 @@ SchevoFlex.egg-info/paster_plugins.txt
 SchevoFlex.egg-info/requires.txt
 SchevoFlex.egg-info/top_level.txt
 schevoflex/__init__.py
+schevoflex/wsgigateway.py
 schevoflex/test/__init__.py
+schevoflex/test/test_get_version.py
