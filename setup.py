@@ -44,6 +44,7 @@ setup(
     include_package_data = True,
     zip_safe = False,
     install_requires = [
+        'PyAMF >= 0.1',
         'Schevo >= 3.1a1',
         ],
     entry_points = """

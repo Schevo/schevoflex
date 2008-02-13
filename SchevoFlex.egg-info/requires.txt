@@ -1,1 +1,2 @@
+PyAMF >= 0.1
 Schevo >= 3.1a1
