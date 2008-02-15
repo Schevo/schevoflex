@@ -1,8 +1,8 @@
 /*
-Tests for schevo.Service class.
-
-Copyright(c) 2008 Orbtech, L.L.C.  Licensed under the LGPL license.
-*/
+  Tests for schevo.Service class.
+  
+  Copyright(c) 2008 Orbtech, L.L.C.  Licensed under the LGPL license.
+ */
 
 package schevo
 {
@@ -15,26 +15,31 @@ import mx.messaging.ChannelSet;
 import mx.messaging.channels.AMFChannel;
 import mx.rpc.AsyncToken;     
 import mx.rpc.events.ResultEvent;
-import mx.rpc.remoting.RemoteObject;
 
 import flexunit.framework.TestCase;
 
-public class ServiceTest extends TestCase {
+import schevo.Service;
 
+public class ServiceTest extends TestCase 
+{
   public function ServiceTest(methodName:String=null) 
   {
     super(methodName);
   }
 
-  public function testGetVersion():void 
+  public static function channelSet():ChannelSet
   {
-    var remoteObj:RemoteObject = new RemoteObject("schevo");
     var amfChannel:Channel = new AMFChannel
       (null, "http://localhost:10101/gateway");
     var amfChannelSet:ChannelSet = new ChannelSet();
     amfChannelSet.addChannel(amfChannel);
-    remoteObj.channelSet = amfChannelSet;
-    var call:AsyncToken = remoteObj.getOperation('service.getVersion').send();
+    return amfChannelSet;
+  }
+
+  public function testGetVersion():void 
+  {
+    var service:Service = new Service(channelSet());
+    var call:AsyncToken = service.getVersion();
     var check:Function = function (event:Event):void
       {
         assertTrue(event.toString(), event is ResultEvent);
