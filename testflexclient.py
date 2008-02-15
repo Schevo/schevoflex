@@ -16,6 +16,8 @@ if __name__ == '__main__':
         '-source-path+=%s,%s' % (join(cfg.FLEXCLIENT_DIR, 'src'),
                                  join(cfg.FLEXCLIENT_DIR, 'tests')),
         '-output=%s' % TEST_RUNNER_SWF,
+        '-incremental=true',
+        '-optimize=true',
         '--',
         join(cfg.FLEXCLIENT_DIR, 'tests', 'SchevoTestRunner.mxml'),
         ])
