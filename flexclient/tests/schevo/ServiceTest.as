@@ -27,18 +27,28 @@ public class ServiceTest extends TestCase
     super(methodName);
   }
 
-  public static function channelSet():ChannelSet
+  public static function channelSet(uris:Array):ChannelSet
   {
-    var amfChannel:Channel = new AMFChannel
-      (null, "http://localhost:10101/gateway");
     var amfChannelSet:ChannelSet = new ChannelSet();
-    amfChannelSet.addChannel(amfChannel);
+    for (var key:String in uris) {
+      amfChannelSet.addChannel(new AMFChannel(null, uris[key]));
+    }
     return amfChannelSet;
+  }
+
+  public static function defaultChannelSet():ChannelSet
+  {
+    return channelSet(["http://localhost:10101/gateway"]);
+  }
+
+  public static function noDebugChannelSet():ChannelSet
+  {
+    return channelSet(["http://localhost:10101/gateway-nodebug"]);
   }
 
   public function testGetVersion():void 
   {
-    var service:Service = new Service(channelSet());
+    var service:Service = new Service(defaultChannelSet());
     var call:AsyncToken = service.getVersion();
     var check:Function = function (event:Event):void
       {
