@@ -1,2 +1,2 @@
-def cleanSlate():
+def cleanSlate(config):
     pass

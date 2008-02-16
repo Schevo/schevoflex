@@ -42,19 +42,19 @@ public class ServiceTest extends SchevoTestCase
     checkCallResult(call, check);
   }
 
-//   public function testGetDatabaseNamesEmpty():void
-//   {
-//     var service:Service = defaultService();
-//     var call:AsyncToken = service.getDatabaseNames();
-//     var check:Function = function (event:Event):void
-//       {
-//         assertTrue(event.toString(), event is ResultEvent);
-//         var data:Object = ResultEvent(event).result;
-//         var expected:Array = [];
-//         assertEquals(data, expected);
-//       };
-//     checkCallResult(call, check);
-//   }
+  public function testGetDatabaseNamesEmpty():void
+  {
+    var service:Service = defaultService();
+    var call:AsyncToken = service.getDatabaseNames();
+    var check:Function = function (event:Event):void
+      {
+        assertTrue(event.toString(), event is ResultEvent);
+        var data:Object = ResultEvent(event).result;
+        var expected:Array = [];
+        assertEquals(data, expected);
+      };
+    checkCallResult(call, check);
+  }
 
   public function testCleanSlate():void
   {

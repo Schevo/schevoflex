@@ -1,11 +1,12 @@
 from pyamf.remoting.wsgigateway import WSGIGateway
 
-from schevoflex.service import DEBUG_SERVICES, SERVICES
+from schevoflex.service import services_factory
 
 
 def app_factory(global_config, **local_config):
-    services = SERVICES.copy()
-    if local_config['debug'] == 'true':
-        services.update(DEBUG_SERVICES)
+    services = services_factory(
+        dbs = local_config['dbs'],
+        debug = (local_config.get('debug') == 'true'),
+        )
     app = WSGIGateway(services)
     return app
