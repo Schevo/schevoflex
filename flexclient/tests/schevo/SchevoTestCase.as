@@ -39,9 +39,19 @@ public class SchevoTestCase extends TestCase
     return channelSet(["http://localhost:10101/gateway"]);
   }
 
+  protected static function defaultService():Service
+  {
+    return new Service(defaultChannelSet());
+  }
+
   protected static function noDebugChannelSet():ChannelSet
   {
     return channelSet(["http://localhost:10101/gateway-nodebug"]);
+  }
+
+  protected static function noDebugService():Service
+  {
+    return new Service(noDebugChannelSet());
   }
 
   protected function checkCallResult(call:AsyncToken, check:Function, 
