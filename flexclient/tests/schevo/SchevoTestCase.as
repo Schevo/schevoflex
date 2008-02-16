@@ -7,8 +7,12 @@
 package schevo
 {
 
+import flash.events.Event;
+
+import mx.collections.ItemResponder;
 import mx.messaging.ChannelSet;
 import mx.messaging.channels.AMFChannel;
+import mx.rpc.AsyncToken;     
 
 import flexunit.framework.TestCase;
 
@@ -38,6 +42,17 @@ public class SchevoTestCase extends TestCase
   protected static function noDebugChannelSet():ChannelSet
   {
     return channelSet(["http://localhost:10101/gateway-nodebug"]);
+  }
+
+  protected function checkCallResult(call:AsyncToken, check:Function, 
+                                     timeout:int=2000):void
+  {
+    var asyncDone:Function = addAsync(check, timeout);
+    var handler:Function = function (event:Event, token:Object=null):void
+      {
+        asyncDone(event);
+      };
+    call.addResponder(new ItemResponder(handler, handler));
   }
 
 }

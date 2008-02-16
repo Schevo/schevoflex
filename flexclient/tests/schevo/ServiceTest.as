@@ -37,12 +37,7 @@ public class ServiceTest extends SchevoTestCase
         var data:Object = ResultEvent(event).result;
         assertEquals(data, "1.0a1dev");
       };
-    var asyncDone:Function = addAsync(check, 2000);
-    var handler:Function = function (event:Event, token:Object=null):void
-      {
-        asyncDone(event);
-      };
-    call.addResponder(new ItemResponder(handler, handler));
+    checkCallResult(call, check);
   }
 
   public function testCleanSlate():void
@@ -55,12 +50,7 @@ public class ServiceTest extends SchevoTestCase
         var data:Object = ResultEvent(event).result;
         assertEquals(data, null);
       };
-    var asyncDone:Function = addAsync(check, 2000);
-    var handler:Function = function (event:Event, token:Object=null):void
-      {
-        asyncDone(event);
-      };
-    call.addResponder(new ItemResponder(handler, handler));
+    checkCallResult(call, check);
   }
 
 }
