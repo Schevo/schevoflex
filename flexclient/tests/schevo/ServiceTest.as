@@ -16,34 +16,15 @@ import mx.messaging.channels.AMFChannel;
 import mx.rpc.AsyncToken;     
 import mx.rpc.events.ResultEvent;
 
-import flexunit.framework.TestCase;
-
 import schevo.Service;
 
-public class ServiceTest extends TestCase 
+import schevo.SchevoTestCase;
+
+public class ServiceTest extends SchevoTestCase 
 {
   public function ServiceTest(methodName:String=null) 
   {
     super(methodName);
-  }
-
-  public static function channelSet(uris:Array):ChannelSet
-  {
-    var amfChannelSet:ChannelSet = new ChannelSet();
-    for (var key:String in uris) {
-      amfChannelSet.addChannel(new AMFChannel(null, uris[key]));
-    }
-    return amfChannelSet;
-  }
-
-  public static function defaultChannelSet():ChannelSet
-  {
-    return channelSet(["http://localhost:10101/gateway"]);
-  }
-
-  public static function noDebugChannelSet():ChannelSet
-  {
-    return channelSet(["http://localhost:10101/gateway-nodebug"]);
   }
 
   public function testGetVersion():void 
