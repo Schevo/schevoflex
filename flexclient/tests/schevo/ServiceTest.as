@@ -13,7 +13,9 @@ import mx.collections.ItemResponder;
 import mx.messaging.Channel;
 import mx.messaging.ChannelSet;
 import mx.messaging.channels.AMFChannel;
-import mx.rpc.AsyncToken;     
+import mx.rpc.AsyncToken;
+import mx.rpc.Fault;
+import mx.rpc.events.FaultEvent;
 import mx.rpc.events.ResultEvent;
 
 import schevo.Service;
@@ -49,6 +51,19 @@ public class ServiceTest extends SchevoTestCase
         assertTrue(event.toString(), event is ResultEvent);
         var data:Object = ResultEvent(event).result;
         assertEquals(data, null);
+      };
+    checkCallResult(call, check);
+  }
+
+  public function testCleanSlateNoDebug():void
+  {
+    var service:Service = new Service(noDebugChannelSet());
+    var call:AsyncToken = service.cleanSlate();
+    var check:Function = function (event:Event):void
+      {
+        assertTrue(event.toString(), event is FaultEvent);
+        var fault:Fault = FaultEvent(event).fault;
+        assertEquals(fault.faultString, "Unknown service debug.cleanSlate");
       };
     checkCallResult(call, check);
   }
