@@ -26,6 +26,11 @@ public class Service extends Object
   {
     return this.remoteObj.getOperation("service.getVersion").send();
   }
+
+  public function cleanSlate():AsyncToken
+  {
+    return this.remoteObj.getOperation("debug.cleanSlate").send();
+  }
 }
 
 }

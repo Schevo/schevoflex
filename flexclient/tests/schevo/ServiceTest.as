@@ -45,6 +45,24 @@ public class ServiceTest extends SchevoTestCase
     call.addResponder(new ItemResponder(handler, handler));
   }
 
+  public function testCleanSlate():void
+  {
+    var service:Service = new Service(defaultChannelSet());
+    var call:AsyncToken = service.cleanSlate();
+    var check:Function = function (event:Event):void
+      {
+        assertTrue(event.toString(), event is ResultEvent);
+        var data:Object = ResultEvent(event).result;
+        assertEquals(data, null);
+      };
+    var asyncDone:Function = addAsync(check, 2000);
+    var handler:Function = function (event:Event, token:Object=null):void
+      {
+        asyncDone(event);
+      };
+    call.addResponder(new ItemResponder(handler, handler));
+  }
+
 }
 
 }
