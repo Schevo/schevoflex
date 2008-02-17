@@ -3,7 +3,7 @@ import pkg_resources
 
 def getDatabaseNames(config):
     # XXX: Do something interesting.
-    return []
+    return {}
 
 
 def getVersion(config):

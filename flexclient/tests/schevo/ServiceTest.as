@@ -17,6 +17,8 @@ import mx.rpc.AsyncToken;
 import mx.rpc.events.FaultEvent;
 import mx.rpc.events.ResultEvent;
 
+import schevo.arraytools;
+import schevo.dicttools;
 import schevo.Service;
 
 import schevo.SchevoTestCase;
@@ -50,8 +52,11 @@ public class ServiceTest extends SchevoTestCase
       {
         assertTrue(event.toString(), event is ResultEvent);
         var data:Object = ResultEvent(event).result;
-        var expected:Array = [];
-        assertEquals(data, expected);
+        var expected:Object = {};
+        assertTrue("Expected " + expected.toString()
+                   + ", got " + data.toString(),
+                   arraytools.equal(dicttools.keys(data),
+                                    dicttools.keys(expected)))
       };
     checkCallResult(call, check);
   }
