@@ -17,9 +17,9 @@ import mx.rpc.AsyncToken;
 import mx.rpc.events.FaultEvent;
 import mx.rpc.events.ResultEvent;
 
-import schevo.arraytools;
-import schevo.dicttools;
 import schevo.Service;
+import schevo.util.arraytools;
+import schevo.util.dicttools;
 
 import schevo.SchevoTestCase;
 

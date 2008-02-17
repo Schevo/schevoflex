@@ -1,4 +1,4 @@
-package schevo
+package schevo.util
 {
 
 import flash.utils.Dictionary;
