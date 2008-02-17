@@ -17,6 +17,15 @@ public class SetTest extends TestCase {
   public function SetTest(methodName:String=null) {
     super(methodName);
   }
+
+  public function test_fromArray():void {
+    var a:Array = [1, 2, 3];
+    var s:Set = Set.fromArray(a);
+    assertEquals(s.size, 3);
+    assertTrue("1 not in s", s.contains(1));
+    assertTrue("2 not in s", s.contains(2));
+    assertTrue("3 not in s", s.contains(3));
+  }
 }
 
 }
