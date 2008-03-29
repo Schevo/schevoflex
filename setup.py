@@ -46,7 +46,7 @@ setup(
     install_requires = [
         'Paste',
         'PasteScript',
-        'PyAMF >= 0.1',
+        'PyAMF >= 0.2',
         'Schevo >= 3.1a1',
         ],
     entry_points = {

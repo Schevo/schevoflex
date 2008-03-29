@@ -1,4 +1,4 @@
-from pyamf.remoting.wsgigateway import WSGIGateway
+from pyamf.remoting.gateway.wsgi import WSGIGateway
 
 from schevoflex.service import services_factory
 
