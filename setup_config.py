@@ -7,7 +7,7 @@ BASE_DIR = abspath(dirname(__file__))
 
 FLEXCLIENT_DIR = join(BASE_DIR, 'flexclient')
 
-FLEX3_SDK = join(BASE_DIR, '../flex3sdk_b3_121207')
+FLEX3_SDK = join(BASE_DIR, '../flex3sdk')
 
 
 if os.name == 'nt':

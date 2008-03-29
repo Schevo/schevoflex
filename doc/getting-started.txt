@@ -1,0 +1,89 @@
+=================================
+ Getting Started with SchevoFlex
+=================================
+
+
+Supported platforms
+===================
+
+As of this writing, the following platforms have been confirmed to
+work as development platforms for SchevoFlex:
+
+- Mac OS X 10.5
+
+
+Download prerequisites
+======================
+
+1. Install Mercurial.  See `Using Mercurial to contribute to Schevo
+   </hg.txt>`__ for a brief primer.
+
+2. In a work directory of your choice, clone the `schevoflex-open`
+   repository to get "bleeding edge" code.  Clone the `schevoflex-dev`
+   repository to get more stable, reviewed code.  In this example,
+   we'll go for the former:
+
+     .. sourcecode:: text
+
+         mkdir work
+         cd work
+         hg clone http://getschevo.org/hg/schevoflex-open
+
+3. Into the work directory, download the Flex 3 SDK from the `Adobe
+   Flex 3 SDK Downloads page
+   <http://opensource.adobe.com/wiki/display/flexsdk/Download+Flex+3>`__.
+   Choose the "Adobe Flex SDK" as you'll be using not only the
+   MPL-licensed code, but also some of the tools included that are not
+   licensed under the MPL.
+
+   Extract the downloaded file (``flex_sdk_3.0.0.477.zip`` is the
+   latest version as of this writing) into a directory within the work
+   directory. In this example, we use ``flex3sdk`` as the directory
+   name:
+
+     .. sourcecode:: text
+
+         mkdir flex3sdk
+         cd flex3sdk
+         unzip ../flex_sdk_3.0.0.477.zip
+         cd ..
+
+4. Into the work directory, download the FlexUnit library from the
+   `FlexUnit Google Code page
+   <http://code.google.com/p/as3flexunitlib/>`__.  Choose the ZIP file
+   available under "Featured Downloads".
+
+   Extract the downloaded file (``flexunit-.85.zip`` is the latest
+   version as of this writing) into the work directory.  It
+   automatically places all files within a directory named
+   ``flexunit``:
+
+     .. sourcecode:: text
+
+         unzip flexunit-.85.zip
+
+
+Set up development mode
+=======================
+
+Within your local clone of the SchevoFlex repository, set up the
+project in development mode:
+
+  .. sourcecode:: text
+
+      python setup.py develop
+
+
+Run full suite of tests
+=======================
+
+Run the full suite of tests, which involves running both Python-based
+and Flash-based tests:
+
+  .. sourcecode:: text
+
+      python testall.py
+
+.. note::
+
+    
