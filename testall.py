@@ -11,22 +11,26 @@ TESTSERVER_INI = join(cfg.BASE_DIR, 'testserver.ini')
 TESTSERVER_PID = join(cfg.BASE_DIR, 'testserver.pid')
 
 
+SKIP_FLEX_TESTS = True
+
+
 if __name__ == '__main__':
-    print '[-] Compiling SchevoTestRunner.mxml.'
-    result = call([
-        cfg.MXMLC_EXE,
-        '-library-path+=%s' % join(cfg.FLEXUNIT, 'bin'),
-        '-source-path+=%s,%s' % (join(cfg.FLEXCLIENT_DIR, 'src'),
-                                 join(cfg.FLEXCLIENT_DIR, 'tests')),
-        '-output=%s' % TEST_RUNNER_SWF,
-        '-incremental=true',
-        '-optimize=true',
-        '--',
-        join(cfg.FLEXCLIENT_DIR, 'tests', 'SchevoTestRunner.mxml'),
-        ])
-    if result != 0:
-        print '[!] Failed to compile SchevoTestRunner.mxml: %i' % result
-        exit(result)
+    if not SKIP_FLEX_TESTS:
+        print '[-] Compiling SchevoTestRunner.mxml.'
+        result = call([
+            cfg.MXMLC_EXE,
+            '-library-path+=%s' % join(cfg.FLEXUNIT, 'bin'),
+            '-source-path+=%s,%s' % (join(cfg.FLEXCLIENT_DIR, 'src'),
+                                     join(cfg.FLEXCLIENT_DIR, 'tests')),
+            '-output=%s' % TEST_RUNNER_SWF,
+            '-incremental=true',
+            '-optimize=true',
+            '--',
+            join(cfg.FLEXCLIENT_DIR, 'tests', 'SchevoTestRunner.mxml'),
+            ])
+        if result != 0:
+            print '[!] Failed to compile SchevoTestRunner.mxml: %i' % result
+            exit(result)
     print '[-] Starting test server.'
     result = call([
         'paster',
@@ -45,12 +49,13 @@ if __name__ == '__main__':
             print '[!] Python tests failed: %i' % result
             exit(result)
         print '[+] Python tests pass.'
-        print '[-] Starting Flash; quit Flash player to finish suite.'
-        call([
-            cfg.FLASH_PLAYER_EXE,
-            TEST_RUNNER_SWF,
-            ])
-        print '[!] Warning: no test results recorded; continuing.'
+        if not SKIP_FLEX_TESTS:
+            print '[-] Starting Flash; quit Flash player to finish suite.'
+            call([
+                cfg.FLASH_PLAYER_EXE,
+                TEST_RUNNER_SWF,
+                ])
+            print '[!] Warning: no test results recorded; continuing.'
     finally:
         print '[-] Shutting down test server.'
         result = call([
